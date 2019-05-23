@@ -23,9 +23,13 @@
                     </div>
                 </div>
             </div>
-            <div class="toggler">
-                <button class="toggle-button" v-on:click="showSearch()">Search Results</button>
-                <button class="toggle-button" v-on:click="showFavorites()">Favorites</button>
+            <div class="container toggler">
+                <div class="row justify-content-center">
+                    <div class="col-6-auto">
+                        <button class="toggle-button" v-on:click="showSearch()">Search Results</button>
+                        <button class="toggle-button" v-on:click="showFavorites()">Favorites</button>
+                    </div>
+                </div>
             </div>
                 <div v-if="loading">
                     <p class="italic text-grey single-body" v-text="loadingMessage"></p>
@@ -68,7 +72,7 @@
                                             <div class="col-12">
                                                 <p>
                                                     Author: <span v-text="book.author"></span>
-                                                    <br>Publisher: <span v-text="book.publisher"></span>
+                                                    <br>Published: <span v-text="book.publisher"></span>
                                                     <br>Page Count: <span v-text="book.number_of_pages"></span>
                                                     <br>ISBN: <span v-text="book.isbn_10"></span>
                                                 </p>

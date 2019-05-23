@@ -6,7 +6,7 @@ body {
 .sticky-header {
     position: sticky;
     padding: 2%;
-    background-color: darkslateblue;
+    background-color: #483d8b;
 }
 
 .title {
@@ -47,4 +47,22 @@ body {
     background-color: peachpuff;
 
     
+}
+
+.toggler {
+    margin: 10px auto 10px;
+}
+
+.toggle-button {
+    border-style: solid;
+    border-color: peru;
+    border-radius: 5px;
+    background-color: peachpuff;
+    color: black;
+    box-shadow: 3px 3px 5px grey;
+}
+
+.toggle-button:hover {
+    background-color: #483d8b99;
+    color: peachpuff;
 }

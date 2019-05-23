@@ -79,7 +79,7 @@ var vue = new Vue ({
                         // TODO make a whole book object out of this output
                         var newBook = {
                             title: bookData.title,
-                            publisher: bookData.publishers[0],
+                            publisher: bookData.publishers[0] + ", " + bookData.publish_date,
                             author: _author,
                             number_of_pages: bookData.number_of_pages,
                             description: bookData.description,
