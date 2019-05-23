@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>Book Index</title>
+        <link rel="stylesheet" href="css/main.css"/>
+        
+    </head>
+    <body>
+        <div id="root">
+            <div class="sticky-header">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-4">
+                            <form v-on:submit.prevent="searchBooks">
+                                <input v-model="bookName" placeholder="Search for a book" />
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div v-if="loading">
+                <p>Loading results...</p>
+            </div>
+            <div v-else>
+                <div class="container">
+                    <template v-for="(item, index) in bookList">
+                        <div class="row">
+                            <div class="col-1">
+                                <p v-text="index + 1"></p>
+                            </div>
+                            <div class="col-4">
+                                <img src="item.src" alt="item.alt">
+                            </div>
+                            <div class="col-7">
+                                <!-- other book info -->
+                            </div>
+                        </div>
+
+                    </template>
+                </div>
+            </div>
+        </div>
+
+        <script src="https://cdn.jsdelivr.net/npm/vue@2.6.2/dist/vue.js"></script>
+        <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+        <script src="js/script.js"></script>
+        
+    </body>
+    
+</html>
