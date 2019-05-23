@@ -1,4 +1,4 @@
-const LIBRARY_API = "http://openlibrary.org/search.json?q="
+const LIBRARY_API = "https://openlibrary.org/search.json?q="
 
 function replaceSpace(str) {
     return str.replace(' ', '+');
