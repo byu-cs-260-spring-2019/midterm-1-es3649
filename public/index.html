@@ -4,6 +4,7 @@
         <meta charset="utf-8">
         <title>Book Index</title>
         <link rel="stylesheet" href="css/main.css"/>
+        <link rel="stylesheet" href="css/bootstrap.css"/>
         
     </head>
     <body>
@@ -11,7 +12,10 @@
             <div class="sticky-header">
                 <div class="container">
                     <div class="row">
-                        <div class="col-4">
+                        <div class="col-9">
+                            <h1 class="title">Book Reviewer</h1>
+                        </div>
+                        <div class="col-3 align-self-center">
                             <form v-on:submit.prevent="searchBooks">
                                 <input v-model="bookName" placeholder="Search for a book" />
                             </form>
@@ -20,20 +24,41 @@
                 </div>
             </div>
             <div v-if="loading">
-                <p>Loading results...</p>
+                <p class="italic text-grey single-body" v-text="loadingMessage"></p>
             </div>
             <div v-else>
                 <div class="container">
-                    <template v-for="(item, index) in bookList">
-                        <div class="row">
+                    <div class="row">
+                        <div class="col-4">
+                            <p class="italic text-grey single-body">Showing <span v-text="bookList.length"></span> results</p>
+                        </div>
+                    </div>
+                    <template v-for="(book, index) in bookList">
+                        <div class="row book-entry">
                             <div class="col-1">
-                                <p v-text="index + 1"></p>
+                                <h5 v-text="index + 1"></h5>
                             </div>
-                            <div class="col-4">
-                                <img src="item.src" alt="item.alt">
+                            <div class="col-2">
+                                <img class="book-image" :src="book.thumbnail_url" :alt="book.title" :title="book.title">
                             </div>
-                            <div class="col-7">
-                                <!-- other book info -->
+                            <div class="col-9">
+                                <div class="container">
+                                    <div class="row">
+                                        <div class="col-12">
+                                            <h4 class="book-title" v-text="book.title"></h4>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-12">
+                                            <p>
+                                                Author: <span v-text="book.author"></span>
+                                                <br>Publisher: <span v-text="book.publisher"></span>
+                                                <br>Page Count: <span v-text="book.number_of_pages"></span>
+                                                <br>ISBN: <span v-text="book.isbn_10"></span>
+                                            </p>
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
                         </div>
 

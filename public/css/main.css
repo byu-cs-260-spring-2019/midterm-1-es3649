@@ -1,0 +1,50 @@
+body {
+    margin: 0px;
+    background-color: burlywood;
+}
+
+.sticky-header {
+    position: sticky;
+    padding: 2%;
+    background-color: darkslateblue;
+}
+
+.title {
+    color: whitesmoke;
+}
+
+.single-body {
+    margin-top: 15px;
+    margin-left: 25%;
+}
+
+.italic {
+    font-style: italic;
+}
+
+.text-grey {
+    color: grey;
+}
+
+.book-image {
+    max-width: 80%;
+    padding: 10%;
+    align-self: center;
+    margin: auto auto auto;
+    border-style: solid;
+    border-width: 1px;
+    border-radius: 5px;
+    border-color: peru;
+    background-color: white;
+}
+
+.book-entry {
+    margin: 10px;
+    padding: 3%;
+    border-style: solid;
+    border-color: peru;
+    border-radius: 15px;
+    background-color: peachpuff;
+
+    
+}
