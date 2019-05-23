@@ -23,46 +23,67 @@
                     </div>
                 </div>
             </div>
-            <div v-if="loading">
-                <p class="italic text-grey single-body" v-text="loadingMessage"></p>
+            <div class="toggler">
+                <button class="toggle-button" v-on:click="showSearch()">Search Results</button>
+                <button class="toggle-button" v-on:click="showFavorites()">Favorites</button>
             </div>
-            <div v-else>
-                <div class="container">
-                    <div class="row">
-                        <div class="col-4">
-                            <p class="italic text-grey single-body">Showing <span v-text="bookList.length"></span> results</p>
+                <div v-if="loading">
+                    <p class="italic text-grey single-body" v-text="loadingMessage"></p>
+                </div>
+                <div v-else>
+                    <div class="container">
+                        <div v-if="searchView">
+                            <div class="row">
+                                <div class="col-4">
+                                    <p class="italic text-grey single-body">Showing <span v-text="bookList.length"></span> results</p>
+                                </div>
+                            </div>
                         </div>
-                    </div>
-                    <template v-for="(book, index) in bookList">
-                        <div class="row book-entry">
-                            <div class="col-1">
-                                <h5 v-text="index + 1"></h5>
-                            </div>
-                            <div class="col-2">
-                                <img class="book-image" :src="book.thumbnail_url" :alt="book.title" :title="book.title">
-                            </div>
-                            <div class="col-9">
-                                <div class="container">
-                                    <div class="row">
-                                        <div class="col-12">
-                                            <h4 class="book-title" v-text="book.title"></h4>
-                                        </div>
-                                    </div>
-                                    <div class="row">
-                                        <div class="col-12">
-                                            <p>
-                                                Author: <span v-text="book.author"></span>
-                                                <br>Publisher: <span v-text="book.publisher"></span>
-                                                <br>Page Count: <span v-text="book.number_of_pages"></span>
-                                                <br>ISBN: <span v-text="book.isbn_10"></span>
-                                            </p>
-                                        </div>
+                        <div v-else>
+                            <div class="row">
+                                <div class="col-12">
+                                    <p class="italic text-grey single-body">Showing favorites</p>
+                                    <div v-if="hasFavorites">
+                                        <h1 class="text-grey single-body">No Favorites Selected!</h1>
                                     </div>
                                 </div>
                             </div>
                         </div>
-
-                    </template>
+                        <template v-for="(book, index) in books">
+                            <div class="row book-entry">
+                                <div class="col-1">
+                                    <h5 v-text="index + 1"></h5>
+                                </div>
+                                <div class="col-2">
+                                    <img class="book-image" :src="book.thumbnail_url" :alt="book.title" :title="book.title">
+                                </div>
+                                <div class="col-6">
+                                    <div class="container">
+                                        <div class="row">
+                                            <div class="col-12">
+                                                <h4 class="book-title" v-text="book.title"></h4>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-12">
+                                                <p>
+                                                    Author: <span v-text="book.author"></span>
+                                                    <br>Publisher: <span v-text="book.publisher"></span>
+                                                    <br>Page Count: <span v-text="book.number_of_pages"></span>
+                                                    <br>ISBN: <span v-text="book.isbn_10"></span>
+                                                </p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-3 align-self-center">
+                                    <label>Mark as favorite</label>
+                                    <input type="checkbox" v-model="book.favorite">
+                                </div>
+                            </div>
+                            
+                        </template>
+                    </div>
                 </div>
             </div>
         </div>

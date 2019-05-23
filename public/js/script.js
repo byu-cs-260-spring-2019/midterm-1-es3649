@@ -8,6 +8,7 @@ var vue = new Vue ({
 
     el: "#root",
     data: {
+        searchView: true,
         loading: true,
         loadingMessage: "Enter a book name to search for it",
         bookName: '',
@@ -15,11 +16,22 @@ var vue = new Vue ({
         masterList: [],
     },
     computed: {
-        favorites() {
-            return this.masterList.filter(book => {return book.favorite});
+        books() {
+            if (this.searchView) {
+                return this.bookList;
+            }
+            return this.masterList.filter(book => {
+                return book.favorite
+            });
         }
     },
     methods: {
+        showFavorites() {
+            this.searchView = false;
+        },
+        showSearch() {
+            this.searchView = true;
+        },
         async searchBooks() {
             this.bookList = [];
             if (this.bookName == '') {
